@@ -1,3 +1,5 @@
+Форма для ReCaptcha
+
 <form> 			
 <div class="form_line_last">
 	<div class="form_text">
@@ -7,3 +9,21 @@
 </div>
 <a href="#0" class='mainform-send-btn btn btn-default'>Отправить</a>
 </form>
+
+Модаль
+
+<div class="modal fade" id="modal-1" tabindex="-1" role="dialog" aria-labelledby="Заказать обратный звонок" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close close-white" data-dismiss="modal" aria-label="Закрыть">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<p class="modal-title-new" id="myModalLabel">Ваше имя и телефон</p>
+			</div>
+			<div class="modal-body">
+				<? echo do_shortcode('[contact-form-7 id="16" title="Обратный звонок в футере"]'); ?> 
+			</div>
+		</div>
+	</div>
+</div>
