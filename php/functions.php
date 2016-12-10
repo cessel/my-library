@@ -137,5 +137,123 @@ function rus_date() {
  return strtr(date(func_get_arg(0)), $translate);
  }
  }
+ 
+ /* Функция создания постраницной навигации 
+ $max_p - максимальное количество страниц
+ $curr_p - текущая страинца
+ $link - базовая ссылка, ссылка на страницу категории без номеров страниц
+ $format - формат добавления номеров страниц в ссылку (ex. ?page=1)
+ */
+function cessel_corenavi($max_p,$curr_p,$link,$format = '%s') 
+	{
+		$link_sep = '';
+		$prev_p = $curr_p-1;
+		$next_p = $curr_p+1;
+		$link = $link.$link_sep;
+		
+		/* Блок кнопок НАЗАД */
+		$prev_text = '<span aria-hidden="true">&laquo;</span>';
+		if($curr_p==1)
+			{
+				$prev_block="<li class='disabled'><a href=''>".$prev_text."</a></li>";
+			}
+		else
+			{
+				
+				$prev_block = "<li><a href='".$link.sprintf ($format,$prev_p)."/' title='".$prev_text."'>".$prev_text."</a></li>";
+			}
+		/* Блок кнопок начальной пагинации*/
+		$max_s = $curr_p - 2;
+		if($max_s>=3)
+			{
+				$max_s=2;
+			}
+		if(($max_s > 2) && ($max_s < 1))
+			{
+				$start_block = '';
+			}
+		else
+			{
+				for($i=1;$i<=$max_s;$i++)
+					{
+						$start_block .= "<li><a href='".$link.sprintf ($format,$i)."/' title='Страница ".$i."'>".$i."</a></li>";
+					}
+			}
+		/* Блок кнопок слева от текущей страницы*/
+		$l_cp = $curr_p-1;
+		if($l_cp<1)
+			{
+				$left_cp_block='';
+			}
+		else
+			{
+				$left_cp_block = "<li><a href='".$link.sprintf ($format,$l_cp)."/' title='Страница ".$l_cp."'>".$l_cp."</a></li>";
+			}
+		/* Блок кнопки текущей страницы*/
+		$curr_block = "<li class='active'><a href='".$link.sprintf ($format,$curr_p)."/' title='Страница ".$curr_p."'>".$curr_p."</a></li>";
+			
+		/* Блок кнопок справа от текущей страницы*/
+		$r_cp =	$curr_p+1;
+		if($r_cp>$max_p)
+			{
+				$right_cp_block='';
+			}
+		else
+			{
+				$right_cp_block = "<li><a href='".$link.sprintf ($format,$r_cp)."/' title='Страница ".$r_cp."'>".$r_cp."</a></li>";
+			}
+		/* Блок кнопок конечной пагинации*/
+		$min_e = $curr_p + 2;
+		if($min_e <= ($max_p - 2))
+			{
+				$min_e = $max_p - 1;
+			}
+		if(($min_e < ($max_p - 1)) && ($min_e > $max_p))
+			{
+				$end_block = '';
+			}
+		else
+			{
+				$end_block = '';
+				for($i=$min_e;$i<=$max_p;$i++)
+					{
+						$end_block .= "<li><a href='".$link.sprintf ($format,$i)."/' title='Страница ".$i."'>".$i."</a></li>";
+					}
+			}
+
+			/* Блок кнопок ДАЛЕЕ */
+		$next_text = '<span aria-hidden="true">&raquo;</span>';
+		if($next_p>=($max_p-1))
+			{
+				$next_block = "<li class='disabled'><a href=''>".$next_text."</a></li>";
+			}
+		else
+			{
+				$next_block = "<li><a href='".$link.sprintf ($format,$next_p)."/' title='".$next_text."'>".$next_text."</a></li>";
+			}
+		/* Блок троеточие между началом и блоком кнопок слева */
+		if(($max_s<($l_cp-1)))
+			{
+				$spaces_l = "<li><a href='#...' title=''>...</a></li>";
+			}
+		/* Блок троеточие между концом и блоком кнопок справа */
+		if(($min_e>($r_cp+1)))
+			{
+				$spaces_r = "<li><a href='#...' title=''>...</a></li>";
+			}
+
+		$pagination = "<div><ul class='pagination'>";
+		$pagination .= $prev_block;
+		$pagination .= $start_block;
+		$pagination .= $spaces_l;
+		$pagination .= $left_cp_block;
+		$pagination .= $curr_block;
+		$pagination .= $right_cp_block;
+		$pagination .= $spaces_r;
+		$pagination .= $end_block;
+		$pagination .= $next_block;
+		$pagination .= "</ul></div>";
+		return $pagination;
+	}
 
 ?>
