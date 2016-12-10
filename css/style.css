@@ -1,0 +1,7 @@
+/*Эффект плавного перехода*/
+	{
+		-webkit-transition: all ease-out 0.3s;
+		-moz-transition: all ease-out 0.3s;
+		-o-transition: all ease-out 0.3s;
+		transition: all ease-out 0.3s;
+	}
