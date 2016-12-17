@@ -155,7 +155,7 @@ function cessel_corenavi($max_p,$curr_p,$link,$format = '%s')
 		$prev_text = '<span aria-hidden="true">&laquo;</span>';
 		if($curr_p==1)
 			{
-				$prev_block="<li class='disabled'><a href=''>".$prev_text."</a></li>";
+				$prev_block="<li class='disabled'><a href='#0'>".$prev_text."</a></li>";
 			}
 		else
 			{
@@ -225,7 +225,7 @@ function cessel_corenavi($max_p,$curr_p,$link,$format = '%s')
 		$next_text = '<span aria-hidden="true">&raquo;</span>';
 		if($next_p>=($max_p-1))
 			{
-				$next_block = "<li class='disabled'><a href=''>".$next_text."</a></li>";
+				$next_block = "<li class='disabled'><a href='#0'>".$next_text."</a></li>";
 			}
 		else
 			{
@@ -255,5 +255,20 @@ function cessel_corenavi($max_p,$curr_p,$link,$format = '%s')
 		$pagination .= "</ul></div>";
 		return $pagination;
 	}
+
+    /**
+     * mb_ucfirst - преобразует первый символ в верхний регистр
+     * @param string $str - строка
+     * @param string $encoding - кодировка, по-умолчанию UTF-8
+     * @return string
+     */
+	function mb_ucfirst($str, $encoding='UTF-8')
+		{
+			$str = mb_strtolower($str, $encoding);
+			$str = mb_ereg_replace('^[\ ]+', '', $str);
+			$str = mb_strtoupper(mb_substr($str, 0, 1, $encoding), $encoding).
+				   mb_substr($str, 1, mb_strlen($str), $encoding);
+			return $str;
+		}
 
 ?>
