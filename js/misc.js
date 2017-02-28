@@ -1,4 +1,4 @@
-/* Инициализация Янкдекс Карт */
+/* Г€Г­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГї ГџГ­ГЄГ¤ГҐГЄГ± ГЉГ Г°ГІ */
 ymaps.ready(init);
 	var myMap, 
 		myPlacemark;
@@ -10,8 +10,15 @@ ymaps.ready(init);
 					{
 						var position = res.geoObjects.get(0).geometry.getCoordinates();
     					myMap = new ymaps.Map('map',{center: position,zoom : 14 });
-						var myPlacemark = new ymaps.Placemark(position,{hintContent: 'Русская Школа Искусств',balloonContent: 'Русская Школа Искусств - Москва, Ул. Ляпидевского, д. 10а'});
+						var myPlacemark = new ymaps.Placemark(position,{hintContent: 'ГђГіГ±Г±ГЄГ Гї ГГЄГ®Г«Г  Г€Г±ГЄГіГ±Г±ГІГў',balloonContent: 'ГђГіГ±Г±ГЄГ Гї ГГЄГ®Г«Г  Г€Г±ГЄГіГ±Г±ГІГў - ГЊГ®Г±ГЄГўГ , Г“Г«. Г‹ГїГЇГЁГ¤ГҐГўГ±ГЄГ®ГЈГ®, Г¤. 10Г '});
 						myMap.geoObjects.add(myPlacemark);  
 					}); 
 			
 			}
+function alertObj(obj) { 
+    var str = ""; 
+    for(k in obj) { 
+        str += k+": "+ obj[k]+"\r\n"; 
+    } 
+    alert(str); 
+} 
