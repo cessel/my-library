@@ -24,7 +24,7 @@ function isValidEmailAddress(emailAddress) {
     }
 function isValidPhone(myPhone) { 
    return /^\d{11}$/.test(myPhone); 
-} 
+}  
 
 function alertObj(obj) { 
     var str = ""; 
