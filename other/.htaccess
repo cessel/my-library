@@ -7,3 +7,9 @@ php_flag ignore_repeated_errors off
 php_flag ignore_repeated_source off
 php_flag report_memleaks on
 php_flag track_errors on
+
+
+RewriteEngine On
+RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+
