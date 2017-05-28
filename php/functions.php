@@ -378,4 +378,13 @@ add_filter( 'post_row_actions', 'true_duplicate_post_link', 10, 2 );
 
 // Конец финкции дублирования
 
+
+//Удаляем category из УРЛа категорий
+add_filter('category_link', create_function('$a', 'return str_replace("category/", "", $a);'), 9999);
+add_filter('post_link', create_function('$a', 'return str_replace("category/", "", $a);'), 9999);
+
+add_filter( 'wpseo_xml_sitemap_img', '__return_false' );
+
+
+
 ?>
