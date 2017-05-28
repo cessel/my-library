@@ -78,3 +78,14 @@ $('.owl-carousel').owlCarousel({
         }
     }
 })
+
+		$('.arrow-next').click(
+			function() 
+				{
+					owl.trigger('next.owl.carousel');
+				})
+		$('.arrow-prev').click(
+			function() 
+				{
+					owl.trigger('prev.owl.carousel');
+				})
