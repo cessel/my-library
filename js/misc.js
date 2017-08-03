@@ -89,3 +89,14 @@ $('.owl-carousel').owlCarousel({
 				{
 					owl.trigger('prev.owl.carousel');
 				})
+				
+on_sent_ok: "yaCounter44581408.reachGoal('message');"
+
+
+function countOfOject(obj) {
+  var t = typeof(obj);
+  var i=0;
+  if (t!="object" || obj==null) return 0;
+  for (x in obj) i++;
+  return i;
+}
