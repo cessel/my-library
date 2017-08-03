@@ -32,3 +32,11 @@
 	{
 		color:#999;
 	}
+
+/* Смена цвета у плайсхолдера */
+
+   input[type="search"]::-moz-placeholder { color: #ffd595; }
+   input[type="search"]::-webkit-input-placeholder { color: #ffd595; }
+   input[type="search"]:-ms-input-placeholder { color: #ffd595; }
+   input[type="search"]::-ms-input-placeholder { color: #ffd595; }
+   input[type="search"]::placeholder { color: #ffd595; } 
